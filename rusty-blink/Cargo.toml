@@ -1,0 +1,21 @@
+[package]
+name = "rusty-blink"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+panic-halt = "0.2"
+embedded-hal = "0.2"
+
+# Use ONLY the git version since 0.0.1 is very old
+stm32g4xx-hal = { git = "https://github.com/stm32-rs/stm32g4xx-hal.git", features = ["stm32g431", "rt"] }
+
+[profile.release]
+debug = true
+lto = true
+
+[profile.dev]
+debug = true
+opt-level = "s"
