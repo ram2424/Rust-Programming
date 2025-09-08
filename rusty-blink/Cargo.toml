@@ -1,21 +1,31 @@
 [package]
-name = "rusty-blink"
+name = "blink"
 version = "0.1.0"
+authors = ["ram2424 <ramsekhar2424@gmail.com>"]
 edition = "2021"
 
 [dependencies]
 cortex-m = "0.7"
 cortex-m-rt = "0.7"
-panic-halt = "0.2"
-embedded-hal = "0.2"
+panic-halt = "0.2.0"
 
-# Use ONLY the git version since 0.0.1 is very old
-stm32g4xx-hal = { git = "https://github.com/stm32-rs/stm32g4xx-hal.git", features = ["stm32g431", "rt"] }
+
+[dependencies.stm32g4xx-hal]
+git = "https://github.com/stm32-rs/stm32g4xx-hal"
+features = ["stm32g431", ]
+
+
+[build-dependencies]
+reqwest = { version = "0.11", features = ["blocking"] }
+
+
+# Set the default for dependencies.
+[profile.dev.package."*"]
+opt-level = "s"
 
 [profile.release]
+codegen-units = 1
+incremental = false
 debug = true
 lto = true
-
-[profile.dev]
-debug = true
 opt-level = "s"
