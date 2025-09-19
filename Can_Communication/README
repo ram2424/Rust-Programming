@@ -1,0 +1,20 @@
+# `STM32- Arduino Due CAN Communication`
+
+1. The goal was to use CAN protocol and establish communication between STM32 and Arduino Due
+
+2. The STM32 Runs on Embassy Rust.
+
+3. Hardware used:
+		- NUCLEO_G431RB
+		- arduino due  
+		- SN65HVD230 
+
+
+## Build and Flash
+
+You can build and flash your firmware using one of those tools:
+
+- `cargo build --release` — builds the code
+- `cargo run --release` — flash and run using `probe-rs run` runner or `probe-run` runner (deprecated) which you can set in `.cargo/config.toml`
+- `cargo embed --release` — multifunctional tool for flash and debug
+
